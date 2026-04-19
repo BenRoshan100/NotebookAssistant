@@ -1,0 +1,79 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "notebook-assistant"
+version = "0.2.0"
+description = "Bring-your-own-LLM chat assistant for Jupyter notebooks — works with OpenAI, Anthropic, Gemini, AWS Bedrock, and any OpenAI-compatible endpoint."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.9"
+authors = [{ name = "Ben Roshan" }]
+keywords = [
+    "jupyter",
+    "notebook",
+    "llm",
+    "openai",
+    "anthropic",
+    "bedrock",
+    "gemini",
+    "data-analysis",
+    "assistant",
+    "chatbot",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Framework :: Jupyter",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+    "litellm>=1.50",
+    "ipython",
+    "ipywidgets>=8",
+    "pandas",
+    "tabulate",
+]
+
+[project.optional-dependencies]
+bedrock = ["boto3>=1.34"]
+dev = [
+    "pytest>=7",
+    "pytest-mock>=3.12",
+    "ruff>=0.5",
+    "build>=1.2",
+    "twine>=5",
+]
+all = ["boto3>=1.34"]
+
+[project.urls]
+Homepage = "https://github.com/benroshan100/NotebookAssistant"
+Repository = "https://github.com/benroshan100/NotebookAssistant"
+Issues = "https://github.com/benroshan100/NotebookAssistant/issues"
+Changelog = "https://github.com/benroshan100/NotebookAssistant/blob/main/CHANGELOG.md"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "W"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "."]
